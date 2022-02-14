@@ -1,64 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Laravel API for Loan Application
+[![GitHub issues](https://img.shields.io/github/issues/shivragshukla/loan-app)](https://github.com/shivragshukla/loan-app/issues)
+[![GitHub license](https://img.shields.io/github/license/shivragshukla/loan-app)](https://github.com/shivragshukla/loan-app/blob/master/LICENSE)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This will create authenticate a user, who will apply for a loan and repay the loan weekly & save in database.
+For late repay, Amount will deducted from repay & saved in Penalty.
+Admin will check the loans & approve/reject accordinly.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Step 1
+Clone the application via git. 
+```bash
+git clone https://github.com/shivragshukla/loan-app.git
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
 
-## Learning Laravel
+#### Package install
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Run the command : 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- The Laravel package will automatically register itself, so you can start using it immediately.
 
-## Laravel Sponsors
+```shell
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### Key generate
 
-### Premium Partners
+Run the command : 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- The Laravel key generate immediately.
 
-## Contributing
+```shell
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Step 2 - SetUp database
 
-## Code of Conduct
+- Open .env file set DB_DATABASE, DB_USERNAME, DB_PASSWORD
+- Run the command : 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```shell
+composer dump-autoload
+```
 
-## Security Vulnerabilities
+```shell
+php artisan migrate:refresh --seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-The jwt token package will automatically register itself, so you can start using it immediately.
 
-## License
+```shell
+php artisan jwt:secret
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Usage
+
+- Run the command on 1st shell: 
+
+```shell
+php artisan serve
+```
+
+- Run the command on 2nd shell: 
+
+
+#### Username & password
+
+- Username : admin@admin.com
+- Password : 123456
+
+
+## Screenshot
+
+#### Registration
+![register](https://user-images.githubusercontent.com/30346330/153858707-d837190a-c6c9-4b11-9947-4296a4ad1c74.png)
+
+#### Login
+![login](https://user-images.githubusercontent.com/30346330/153858699-9841c2ad-bf4b-458f-9649-569015571001.png)
+
+#### Profile
+![profile](https://user-images.githubusercontent.com/30346330/153858704-0331a1b4-d690-4d84-860f-866a07b83764.png)
+
+#### Loan apply
+![loan-apply](https://user-images.githubusercontent.com/30346330/153858684-2bba0663-4a07-4ac2-8255-ae95cc41a319.png)
+
+#### Loan approve
+![loan-approve](https://user-images.githubusercontent.com/30346330/153858688-f6e1c92d-268f-4c31-8bcb-899d2b3be529.png)
+
+#### Loan - getAll
+![loan-get-all](https://user-images.githubusercontent.com/30346330/153858692-baa7e782-af13-413c-9697-eab40608d1a1.png)
+
+#### Loan - summary
+![summary](https://user-images.githubusercontent.com/30346330/153858713-c3cc1a4c-75a1-4ad2-ae5d-856ede480edb.png)
+
+
+#### Repayment
+![repayment](https://user-images.githubusercontent.com/30346330/153858710-3dab3906-d488-4b8b-8eb8-92211e593d25.png)
+
+
+Development supported by: Shivrag Shukla
+<br>
+For any doubts contact : shivragshukla001@gmail.com
